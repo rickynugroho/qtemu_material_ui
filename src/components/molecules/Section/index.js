@@ -7,7 +7,10 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
-    margin: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
   },
   section: {
     padding: theme.spacing.unit * 2,
@@ -37,13 +40,8 @@ class Section extends Component {
       <div className={classes.root}>
         {this.state.title}
 
-        <Paper className={classes.section} elevation={1} rounded="false">
+        <Paper className={classes.section} elevation={this.props.elevation} rounded="false">
           {this.props.children}
-          {/* 
-          <Typography component="p">
-            Paper can be used to build surface or other elements for your application.
-          </Typography> 
-          */}
         </Paper>
       </div>
     );
@@ -56,6 +54,7 @@ Section.propTypes = {
 
 Section.defaultProps = {
   title: null,
+  elevation: 2,
 };
 
 export default withStyles(styles)(Section);
