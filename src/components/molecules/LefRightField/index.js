@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 export default class LeftRightField extends Component {
   render() {
@@ -12,10 +12,14 @@ export default class LeftRightField extends Component {
         className={this.props.className}
       >
         <Grid item xs={this.props.leftXs}>
-          {this.props.leftText}
+          <Typography>
+            {this.props.leftText}
+          </Typography>
         </Grid>
         <Grid item xs={this.props.rightXs}>
-          {this.props.rightText}
+          <Typography>
+            {this.props.rightText}
+          </Typography>
         </Grid>
       </Grid>
     )
