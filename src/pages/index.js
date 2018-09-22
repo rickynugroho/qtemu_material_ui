@@ -63,6 +63,7 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
+
         <Header />
 
         <Section>
@@ -109,6 +110,11 @@ class Index extends React.Component {
             </Grid>
           </Grid>
         </Section>
+
+        <Section title="Next Meetup">
+
+        </Section>
+
       </div>
     );
   }
