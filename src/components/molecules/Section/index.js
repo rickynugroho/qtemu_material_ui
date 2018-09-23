@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -19,7 +20,7 @@ const styles = theme => ({
   noElevation: {
     padding: 0,
     backgroundColor: 'inherit',
-  }
+  },
 });
 
 class Section extends Component {
@@ -43,7 +44,21 @@ class Section extends Component {
 
     return (
       <div className={classes.root}>
-        {this.state.title}
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+          alignItems="flex-start"
+        >
+          <Grid item xs>
+            {this.state.title}
+          </Grid>
+          <Grid item xs>
+            <Typography align="right">
+              {this.props.rightContent}
+            </Typography>
+          </Grid>
+        </Grid>
 
         <Paper className={className} elevation={this.props.elevation} rounded="false">
           {this.props.children}
@@ -59,6 +74,7 @@ Section.propTypes = {
 
 Section.defaultProps = {
   title: null,
+  rightContent: null,
   elevation: 2,
 };
 
