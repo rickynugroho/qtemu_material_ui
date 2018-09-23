@@ -16,6 +16,10 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit,
   },
+  noElevation: {
+    padding: 0,
+    backgroundColor: 'inherit',
+  }
 });
 
 class Section extends Component {
@@ -35,12 +39,13 @@ class Section extends Component {
 
   render() {
     const { classes } = this.props;
+    let className = classes.section + ' ' + ((this.props.elevation && this.props.elevation) == 0 ? classes.noElevation : null);
 
     return (
       <div className={classes.root}>
         {this.state.title}
 
-        <Paper className={classes.section} elevation={this.props.elevation} rounded="false">
+        <Paper className={className} elevation={this.props.elevation} rounded="false">
           {this.props.children}
         </Paper>
       </div>
