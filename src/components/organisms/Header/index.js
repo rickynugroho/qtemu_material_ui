@@ -14,7 +14,7 @@ const styles = {
   },
   title: {
     textTransform: 'none',
-    fontSize: '1.2em',
+    fontSize: '1.5em',
     // marginLeft: -15,
   },
   // menuButton: {
