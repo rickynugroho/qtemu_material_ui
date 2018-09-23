@@ -39,7 +39,7 @@ class Section extends Component {
 
   render() {
     const { classes } = this.props;
-    let className = classes.section + ' ' + ((this.props.elevation && this.props.elevation) == 0 ? classes.noElevation : null);
+    let className = classes.section + ' ' + ((this.props.elevation && this.props.elevation) === 0 ? classes.noElevation : null);
 
     return (
       <div className={classes.root}>
