@@ -8,7 +8,9 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import Image from '../components/atoms/Image';
 import LeftRightField from '../components/molecules/LefRightField';
 import NewsSingle from '../components/molecules/NewsSingle';
-
+import RawHtml from '../components/atoms/RawHtml';
+import axios from 'axios';
+import MemberList from '../components/molecules/MemberList';
 
 const styles = theme => ({
   root: {
@@ -23,6 +25,7 @@ const styles = theme => ({
 class Index extends React.Component {
   // 1. Cara menampilkan raw HTML di react material ui dgn menggunakan Typography
   // 2. Perbedaan function (material ui) dan component (yg sudah diajarkan), mana yg harus digunakan?
+  // 3. Create a href in material ui, use Button?
 
   constructor() {
     super();
@@ -34,9 +37,16 @@ class Index extends React.Component {
         location: 'Jakarta, Indonesia',
         numberOfMembers: '796',
         headOrganizer: 'Hacktiv8',
-        memberOrganizer: [],
+        members: [],
       },
-      twitter: '@ReactMeetup',
+      about: {
+        description: `
+        <p>
+          Come and meet other developers.
+        </p>
+        `,
+        twitter: '@ReactMeetup',
+      },
       hashTag: '#reactmeetup',
       nextMeetups: {
         title: 'Awesome Meetup Events',
@@ -86,8 +96,20 @@ class Index extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios
+      .get("https://randomuser.me/api/?results=15")
+      .then(response => {
+        let temporaryState = this.state;
+        temporaryState.info.members = response.data.results;
+        this.setState(temporaryState);
+      });
+  }
+
+
   render() {
     const { classes } = this.props;
+    let twitterLink = `http://twitter.com/${this.state.about.twitter}`;
 
     return (
       <div className={classes.root}>
@@ -145,6 +167,18 @@ class Index extends React.Component {
           </NewsSingle>
         </Section>
 
+        <Section title="About Meetup" elevation={0}>
+          <RawHtml>
+            {this.state.about.description}
+          </RawHtml>
+          <Typography>
+            Twitter: <Button href={twitterLink}>{this.state.about.twitter}</Button>
+          </Typography>
+        </Section>
+
+        <Section title="Members">
+          <MemberList memberList={this.state.info.members} />
+        </Section>
       </div>
     );
   }
