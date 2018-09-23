@@ -7,6 +7,7 @@ import Section from '../components/molecules/Section';
 import { Grid, Typography, Button } from '@material-ui/core';
 import Image from '../components/atoms/Image';
 import LeftRightField from '../components/molecules/LefRightField';
+import NewsSingle from '../components/molecules/NewsSingle';
 
 
 const styles = theme => ({
@@ -20,11 +21,13 @@ const styles = theme => ({
 });
 
 class Index extends React.Component {
+  // 1. Cara menampilkan raw HTML di react material ui dgn menggunakan Typography
+  // 2. Perbedaan function (material ui) dan component (yg sudah diajarkan), mana yg harus digunakan?
+
   constructor() {
     super();
 
     this.state = {
-      tanggal: new Date().toString(),
       info: {
         meetupName: 'React Meetup',
         meetupImage: '/img/host-meetup.jpg',
@@ -35,6 +38,31 @@ class Index extends React.Component {
       },
       twitter: '@ReactMeetup',
       hashTag: '#reactmeetup',
+      nextMeetups: {
+        title: 'Awesome Meetup Events',
+        date: new Date().toString(),
+        content: `
+          <p>
+            Hello, JavaScript & Node.js Ninjas!<br />
+            Get ready for our monthly meetup JakartaJS! This will be our fifth meetup of 2018!<br />
+            The meetup format will contain some short stories and technical talks.<br />
+            If you have short announcement you'd like to share with the audience, you may do so during open mic accouncement.
+          </p>
+          <p>
+            Remember to bring a photo ID to get through building security.
+          </p>
+          <p>
+            -----
+          </p>
+          <p>
+            See you there!
+          </p>
+          <p>
+            Best,<br /> 
+            The JakartaJS Organizers
+          </p>
+        `,
+      },
       meetups: [
         {
           id: 39,
@@ -112,7 +140,9 @@ class Index extends React.Component {
         </Section>
 
         <Section title="Next Meetup">
-
+          <NewsSingle title={this.state.nextMeetups.title} date={this.state.nextMeetups.date}>
+            {this.state.nextMeetups.content}
+          </NewsSingle>
         </Section>
 
       </div>
