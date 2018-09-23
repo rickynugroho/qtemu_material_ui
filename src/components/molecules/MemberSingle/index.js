@@ -1,47 +1,55 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import Typography from '@material-ui/core/Typography';
-import { Grid, Avatar } from '@material-ui/core';
+import { Grid, Avatar, Typography } from '@material-ui/core';
 
 const styles = {
   row: {
     display: 'flex',
     justifyContent: 'center',
   },
-  avatar: {
-    margin: 10,
-  },
+  // avatar: {
+  //   margin: 0,
+  // },
   bigAvatar: {
-    width: 60,
-    height: 60,
+    width: 64,
+    height: 64,
+  },
+  wrapWord: {
+    wordWrap: 'break-word',
+  },
+  avatarWrapper: {
+    maxWidth: 80,
+  },
+  memberName: {
+    fontWeight: 'bold',
   },
 };
 
 class MemberSingle extends Component {
   render() {
     const { classes } = this.props;
-    var classNames = require('classnames');
+    // var classNames = require('classnames');
 
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={3}>
+      <Grid container spacing={0}>
+        <Grid item xs className={classes.avatarWrapper}>
           <Avatar
             alt={this.props.memberInfo.name.first}
             src={this.props.memberInfo.picture.large}
-            className={classNames(classes.avatar, classes.bigAvatar)}
+            // className={classNames(classes.avatar, classes.bigAvatar)}
+            className={classes.bigAvatar}
           />
         </Grid>
-        <Grid item xs={9}>
-          {this.props.memberInfo.name.first}
-          <br />
-          {this.props.memberInfo.email}
+        <Grid item zeroMinWidth xs>
+          <Typography className={classes.memberName}>
+            {this.props.memberInfo.name.first}
+          </Typography>
+          <Typography className={classes.wrapWord}>
+            {this.props.memberInfo.email}
+          </Typography>
         </Grid>
       </Grid>
-      // <DivText className="profile-member">
-      //   <DivText>{member.name.first}</DivText>
-      //   <DivText className="wrap-text">{member.email}</DivText>
-      // </DivText>
     );
   }
 }

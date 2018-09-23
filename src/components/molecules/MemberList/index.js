@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, Grid, Avatar } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import MemberSingle from '../MemberSingle';
 
 class MemberList extends Component {
@@ -9,6 +9,7 @@ class MemberList extends Component {
 
     this.state = {
       memberList: [],
+      showAll: false,
     };
   }
 
@@ -19,36 +20,67 @@ class MemberList extends Component {
       });
 
       return true;
+    } else if (this.state.showAll !== nextProps.showAll) {
+      this.setState({
+        showAll: nextProps.showAll,
+      });
+
+      return true;
     }
     return false;
   }
 
-  renderMemberList(props) {
+  renderMemberList() {
     // const { classes } = props;
     
     if (this.state.memberList.length <= 0) {
+      //show loading
       return (
         <div>
           <img src="img/ajax-loader.gif" alt="Loading" />
         </div>
       );
     } else {
-      return this.state.memberList.map((member, index) => {
-        if(index < 4){
+      if (this.state.showAll === false){
+        return this.state.memberList.map((member, index) => {
+          if(index < 3){
+            return (
+              <Grid item xs={3} key={index}>
+                <MemberSingle memberInfo={member} />
+              </Grid>
+            );
+          }
+          return null;
+        });
+      } else {
+        return this.state.memberList.map((member, index) => {
           return (
-            <Grid item xs={3}>
-              <MemberSingle key={index} memberInfo={member} />
+            <Grid item xs={3} key={index}>
+              <MemberSingle memberInfo={member} />
             </Grid>
           );
-        }
-      })
+        });
+      }
+    }
+  }
+
+  showTotalMember() {
+    if (this.state.memberList.length > 0 && !this.state.showAll) {
+      return(
+        <Grid item xs={3}>
+          <Typography>
+            and {this.state.memberList.length - 3} others.
+          </Typography>
+        </Grid>
+      );
     }
   }
 
   render() {
     return (
       <Grid container spacing={24}>
-        {this.renderMemberList(this.props)}
+        {this.renderMemberList()}
+        {this.showTotalMember()}
       </Grid>
     )
   }

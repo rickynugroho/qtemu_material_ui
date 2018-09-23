@@ -10,7 +10,8 @@ import LeftRightField from '../components/molecules/LefRightField';
 import NewsSingle from '../components/molecules/NewsSingle';
 import RawHtml from '../components/atoms/RawHtml';
 import axios from 'axios';
-import MemberList from '../components/molecules/MemberList';
+// import MemberList from '../components/molecules/MemberList';
+import Members from '../components/organisms/Members';
 
 const styles = theme => ({
   root: {
@@ -26,6 +27,9 @@ class Index extends React.Component {
   // 1. Cara menampilkan raw HTML di react material ui dgn menggunakan Typography
   // 2. Perbedaan function (material ui) dan component (yg sudah diajarkan), mana yg harus digunakan?
   // 3. Create a href in material ui, use Button?
+  // 4. React.Fragment apakah kita harus menggunakan ini pada saat map()? Atau pakai div saja?
+  // 5. Penggunaan atomic design berkurang karena menggunakan material-ui, apakah ini artinya benar?
+  // 6. Karena banyak state yg diperlukan, maka content bagian members dipindah ke organism, di index hanya dipanggil saja dgn props list member. Apakah ini benar?
 
   constructor() {
     super();
@@ -98,7 +102,7 @@ class Index extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://randomuser.me/api/?results=15")
+      .get("https://randomuser.me/api/?results=16")
       .then(response => {
         let temporaryState = this.state;
         temporaryState.info.members = response.data.results;
@@ -118,14 +122,14 @@ class Index extends React.Component {
 
         <Section>
           <Grid container spacing={24}>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <Image
                 src={this.state.info.meetupImage}
                 alt={this.state.info.meetupName}
                 className={classes.fluidImage}
               />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={9}>
               <Grid
                 container
                 direction="column"
@@ -176,9 +180,7 @@ class Index extends React.Component {
           </Typography>
         </Section>
 
-        <Section title="Members">
-          <MemberList memberList={this.state.info.members} />
-        </Section>
+        <Members memberList={this.state.info.members} />
       </div>
     );
   }
