@@ -13,6 +13,7 @@ import axios from 'axios';
 // import MemberList from '../components/molecules/MemberList';
 import Members from '../components/organisms/Members';
 import PastMeetup from '../components/organisms/PastMeetup';
+import Footer from '../components/organisms/Footer';
 
 const styles = theme => ({
   root: {
@@ -184,6 +185,8 @@ class Index extends React.Component {
         <Members memberList={this.state.info.members} />
 
         <PastMeetup meetupList={this.state.meetups} />
+
+        <Footer />
       </div>
     );
   }
