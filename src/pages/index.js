@@ -12,6 +12,7 @@ import RawHtml from '../components/atoms/RawHtml';
 import axios from 'axios';
 // import MemberList from '../components/molecules/MemberList';
 import Members from '../components/organisms/Members';
+import PastMeetup from '../components/organisms/PastMeetup';
 
 const styles = theme => ({
   root: {
@@ -181,6 +182,8 @@ class Index extends React.Component {
         </Section>
 
         <Members memberList={this.state.info.members} />
+
+        <PastMeetup meetupList={this.state.meetups} />
       </div>
     );
   }
