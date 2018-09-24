@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Section from '../../molecules/Section';
-import { Grid, withStyles, Typography, Card, CardContent, CardActions } from '@material-ui/core';
+import { Grid, withStyles, Typography, Card, CardContent } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -9,6 +9,12 @@ const styles = theme => ({
   },
   card: {
     margin: theme.spacing.unit * 2,
+  },
+  line: {
+    border: 0,
+    height: 1,
+    backgroundColor: '#ccc',
+    color: '#ccc',
   },
 });
 
@@ -33,7 +39,7 @@ class PastMeetup extends Component {
               <Typography>
                 {meetup.date}
               </Typography>
-              <hr />
+              <hr className={classes.line} />
               <Typography gutterBottom={true}>
                 {meetup.topic}
               </Typography>
