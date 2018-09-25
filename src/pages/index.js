@@ -10,7 +10,6 @@ import LeftRightField from '../components/molecules/LefRightField';
 import NewsSingle from '../components/molecules/NewsSingle';
 import RawHtml from '../components/atoms/RawHtml';
 import axios from 'axios';
-// import MemberList from '../components/molecules/MemberList';
 import Members from '../components/organisms/Members';
 import PastMeetup from '../components/organisms/PastMeetup';
 import Footer from '../components/organisms/Footer';
