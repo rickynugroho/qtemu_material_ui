@@ -11,11 +11,16 @@ const styles = theme => ({
 class RawHtml extends Component {
     render() {
         const { classes } = this.props;
+        var classNames = require('classnames');
 
         return (
-            <div className={classes.root} dangerouslySetInnerHTML={{__html: this.props.children}} />
+            <div className={classNames(this.props.className, classes.root)} dangerouslySetInnerHTML={{__html: this.props.children}} />
         )
     }
 }
+
+RawHtml.defaultProps = {
+  className: null,
+};
 
 export default withStyles(styles)(RawHtml);
