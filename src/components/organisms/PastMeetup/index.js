@@ -58,7 +58,7 @@ class PastMeetup extends Component {
     const { classes } = this.props;
 
     return (
-      <Section title="Past Meetup" elevation={0} rightContent={<Button>Show All</Button>}>
+      <Section className={this.props.className} title={this.props.title} elevation={0} rightContent={this.props.rightContent}>
         <div className={classes.root}>
         <Grid container spacing={0}>
           {this.renderPastMeetupList()}
@@ -68,5 +68,11 @@ class PastMeetup extends Component {
     )
   }
 }
+
+PastMeetup.defaultProps = {
+  title: null,
+  rightContent: null,
+  className: null,
+};
 
 export default withStyles(styles)(PastMeetup);
