@@ -12,6 +12,9 @@ import Login from './Login';
 import Explore from './Explore';
 import Footer from '../components/organisms/Footer';
 
+import { Provider } from "react-redux";
+import store from "../configs";
+
 // import PropTypes from 'prop-types';
 // import Header from '../components/organisms/Header';
 // import Section from '../components/molecules/Section';
@@ -35,40 +38,42 @@ class Index extends React.Component {
     const { classes } = this.props;
     
     return (
-      <Router>
-        <div>
-          <AppBar position="static">
-            <Toolbar>
-              {/* 
-              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                <MenuIcon />
-              </IconButton> 
-              */}
+      <Provider store={store}>
+        <Router>
+          <div>
+            <AppBar position="static">
+              <Toolbar>
+                {/* 
+                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                  <MenuIcon />
+                </IconButton> 
+                */}
 
-              <div className={classes.grow}>
-                <Button component={Link} to="/" className={classes.title} variant="text" color="inherit">
-                  Qtemu
-                </Button>
-              </div>
+                <div className={classes.grow}>
+                  <Button component={Link} to="/" className={classes.title} variant="text" color="inherit">
+                    Qtemu
+                  </Button>
+                </div>
 
-              <Button component={Link} to="/create_meetup" color="inherit">Create Meetup</Button>
-              <Button component={Link} to="/explore" color="inherit">Explore</Button>
-              <Button component={Link} to="/about" color="inherit">About</Button>
-              <Button component={Link} to="/login" color="inherit">Login</Button>
-            </Toolbar>
-          </AppBar>
+                <Button component={Link} to="/create_meetup" color="inherit">Create Meetup</Button>
+                <Button component={Link} to="/explore" color="inherit">Explore</Button>
+                <Button component={Link} to="/about" color="inherit">About</Button>
+                <Button component={Link} to="/login" color="inherit">Login</Button>
+              </Toolbar>
+            </AppBar>
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/login" component={Login} />
-            <Route path="/explore" component={Explore} />
-            <Route component={NotFound} />
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/login" component={Login} />
+              <Route path="/explore" component={Explore} />
+              <Route component={NotFound} />
+            </Switch>
 
-          <Footer />
-        </div>
-      </Router>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

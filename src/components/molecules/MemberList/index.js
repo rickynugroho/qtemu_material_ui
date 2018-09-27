@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import MemberSingle from '../MemberSingle';
+import { connect } from 'react-redux';
+import {
+  UserActionCreator,
+} from '../../../actions';
+
+const mapStateToProps = (state) => {
+  return {
+    members: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    profile: (data) => dispatch(UserActionCreator.profile(data)),
+  };
+};
 
 class MemberList extends Component {
 
@@ -76,15 +92,27 @@ class MemberList extends Component {
     }
   }
 
+  setProfile() {
+    this.props.hitung({
+      name: 'Ricky',
+      email: 'edu.ricky.nugroho@gmail.com',
+    });
+  }
+
   render() {
     return (
       <Grid container spacing={24}>
         {this.renderMemberList()}
         {this.showTotalMember()}
+
+        <Grid item xs={3}>
+          {/* <Button onClick={() => this.setProfile()}>Profile</Button> */}
+        </Grid>
       </Grid>
     )
   }
 }
 
 // export default withStyles(styles)(MemberList);
-export default MemberList;
+// export default connect(mapStateToProps, mapDispatchToProps)(MemberList);
+export default (MemberList);

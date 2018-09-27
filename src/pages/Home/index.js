@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import withRoot from '../../withRoot';
+import { connect } from 'react-redux';
 // import Header from '../../components/organisms/Header';
 import Section from '../../components/molecules/Section';
 import { Grid, Typography, Button } from '@material-ui/core';
@@ -12,6 +12,9 @@ import RawHtml from '../../components/atoms/RawHtml';
 import axios from 'axios';
 import Members from '../../components/organisms/Members';
 import PastMeetup from '../../components/organisms/PastMeetup';
+import {
+  UserActionCreator,
+} from '../../actions';
 
 const styles = theme => ({
   root: {
@@ -22,6 +25,22 @@ const styles = theme => ({
     width: "100%",
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    members: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hitung: (data) => dispatch(UserActionCreator.hitung(data)),
+    // fetchData: () => dispatch(UserActionCreator.fetchData()),
+    // register: (data) => dispatch(UserActionCreator.register(data)),
+    // login: (data) => dispatch(UserActionCreator.login(data)),
+    // logout: () => dispatch(UserActionCreator.logout()),
+  };
+};
 
 class Home extends React.Component {
   // 1. Cara menampilkan raw HTML di react material ui dgn menggunakan Typography
@@ -100,6 +119,15 @@ class Home extends React.Component {
     };
   }
 
+  onClickHitung = (data) => {
+    // console.log('Angka sebelum: ', this.props.members.angka);
+
+    this.props.hitung({
+      angka: 8,
+    });
+
+  };
+
   componentDidMount() {
     axios
       .get("https://randomuser.me/api/?results=16")
@@ -112,6 +140,7 @@ class Home extends React.Component {
 
 
   render() {
+    console.log('Angka: ', this.props.members.angka);
     const { classes } = this.props;
     let twitterLink = `http://twitter.com/${this.state.about.twitter}`;
 
@@ -159,6 +188,10 @@ class Home extends React.Component {
                   <Button variant="contained" color="primary" className={classes.button}>
                     Join Us
                   </Button>
+
+                  <Button variant="contained" color="primary" className={classes.button} onClick={()=> this.onClickHitung()}>
+                    Hitung
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
@@ -192,4 +225,4 @@ Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRoot(withStyles(styles)(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));
