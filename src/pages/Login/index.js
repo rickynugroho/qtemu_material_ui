@@ -26,7 +26,7 @@ class Login extends React.Component {
         justify="center"
         alignItems="flex-start"
       >
-        <Grid xs={4}>
+        <Grid item xs={4}>
           <Section>
             <Typography variant="headline" component="h1" className={classes.title}>
               Login
