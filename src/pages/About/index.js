@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../../withRoot';
 import Section from '../../components/molecules/Section';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import Image from '../../components/atoms/Image';
 import RawHtml from '../../components/atoms/RawHtml';
 
@@ -11,6 +11,10 @@ const styles = theme => ({
   root: {
     // textAlign: 'center',
     // paddingTop: theme.spacing.unit * 20,
+  },
+  title: {
+    marginBottom: 15,
+    // textAlign: 'center',
   },
   fluidImage: {
     width: "100%",
@@ -44,6 +48,9 @@ class About extends React.Component {
     return (
       <div className={classes.root}>
         <Section>
+          <Typography variant="headline" component="h1" className={classes.title}>
+            About Us
+          </Typography>
           <Grid container spacing={16}>
             <Grid item xs={4}>
               <Image
