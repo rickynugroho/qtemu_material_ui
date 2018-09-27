@@ -9,6 +9,8 @@ import About from './About';
 import { Button } from '@material-ui/core';
 import NotFound from './NotFound';
 import Login from './Login';
+import Explore from './Explore';
+import Footer from '../components/organisms/Footer';
 
 // import PropTypes from 'prop-types';
 // import Header from '../components/organisms/Header';
@@ -60,8 +62,11 @@ class Index extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/login" component={Login} />
+            <Route path="/explore" component={Explore} />
             <Route component={NotFound} />
           </Switch>
+
+          <Footer />
         </div>
       </Router>
     );

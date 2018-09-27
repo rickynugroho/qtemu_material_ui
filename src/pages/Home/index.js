@@ -12,7 +12,6 @@ import RawHtml from '../../components/atoms/RawHtml';
 import axios from 'axios';
 import Members from '../../components/organisms/Members';
 import PastMeetup from '../../components/organisms/PastMeetup';
-import Footer from '../../components/organisms/Footer';
 
 const styles = theme => ({
   root: {
@@ -183,9 +182,7 @@ class Home extends React.Component {
 
         <Members memberList={this.state.info.members} />
 
-        <PastMeetup meetupList={this.state.meetups} />
-
-        <Footer />
+        <PastMeetup meetupList={this.state.meetups} title="Past Meetup" rightContent={<Button>Show All</Button>} />
       </div>
     );
   }
