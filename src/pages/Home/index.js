@@ -195,6 +195,9 @@ class Home extends React.Component {
                   <Button variant="contained" color="primary" className={classes.button} onClick={()=> this.onClickHitung()}>
                     Hitung
                   </Button>
+                  <Typography>
+                    Angka: {this.props.members.angka}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
