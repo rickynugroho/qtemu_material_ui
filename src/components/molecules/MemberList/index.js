@@ -43,15 +43,16 @@ class MemberList extends Component {
       });
 
       return true;
-    } else if(this.state.user !== this.props.user){
-      //should we do this?
-      //Knp masuknya sbg user.user
-      this.setState({
-        user: nextProps.user,
-      });
+    } 
+    // else if(this.state.user !== this.props.user){
+    //   //should we do this?
+    //   //Knp masuknya sbg user.user
+    //   this.setState({
+    //     user: nextProps.user,
+    //   });
 
-      return true;
-    }
+    //   return true;
+    // }
     return false;
   }
 
@@ -101,7 +102,8 @@ class MemberList extends Component {
     }
   }
 
-  setProfile() {
+  
+  setProfile = (data) => {
     this.props.updateProfile({
       name: 'Ricky',
       email: 'edu.ricky.nugroho@gmail.com',
