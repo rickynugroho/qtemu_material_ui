@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    user: state.user.user,
   };
 };
 
@@ -102,7 +102,6 @@ class MemberList extends Component {
     }
   }
 
-  
   setProfile = (data) => {
     this.props.updateProfile({
       name: 'Ricky',
@@ -119,8 +118,8 @@ class MemberList extends Component {
 
         <Grid item xs={3}>
           <Button variant="contained" color="primary" onClick={() => this.setProfile()}>Set User Profile</Button>
-          <Typography>User: {this.props.user.user.name}</Typography>
-          <Typography>Email: {this.props.user.user.email}</Typography>
+          <Typography>User: {this.props.user.name}</Typography>
+          <Typography>Email: {this.props.user.email}</Typography>
         </Grid>
       </Grid>
     )
