@@ -14,6 +14,7 @@ import Members from '../../components/organisms/Members';
 import PastMeetup from '../../components/organisms/PastMeetup';
 import {
   UserActionCreator,
+  ProductActionCreator,
 } from '../../actions';
 
 const styles = theme => ({
@@ -29,12 +30,14 @@ const styles = theme => ({
 const mapStateToProps = (state) => {
   return {
     members: state.user,
+    product: state.product,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     hitung: (data) => dispatch(UserActionCreator.hitung(data)),
+    createProduct: (data) => dispatch(ProductActionCreator.createProduct(data)),
     // fetchData: () => dispatch(UserActionCreator.fetchData()),
     // register: (data) => dispatch(UserActionCreator.register(data)),
     // login: (data) => dispatch(UserActionCreator.login(data)),
