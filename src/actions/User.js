@@ -24,11 +24,11 @@ export function hitung(data) {
   };
 }
 
-export function profile(data) {
+export function updateProfile(data) {
   return {
-    type: PROFILE,
+    type: UPDATE_PROFILE,
     payload: {
-      nama: data.nama,
+      name: data.name,
       email: data.email,
     }
   };

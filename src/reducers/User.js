@@ -22,6 +22,11 @@ export default (state = initialState, action) => {
         members: action.payload,
       };
     case UPDATE_PROFILE:
+      return {
+        ...state,
+        user: action.payload,
+      };
+
     case REGISTER:
     case LOGIN:
       return {

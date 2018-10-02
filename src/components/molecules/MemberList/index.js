@@ -8,13 +8,13 @@ import {
 
 const mapStateToProps = (state) => {
   return {
-    members: state.user,
+    user: state.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    profile: (data) => dispatch(UserActionCreator.profile(data)),
+    updateProfile: (data) => dispatch(UserActionCreator.updateProfile(data)),
   };
 };
 
@@ -26,6 +26,7 @@ class MemberList extends Component {
     this.state = {
       memberList: [],
       showAll: false,
+      user: [],
     };
   }
 
@@ -39,6 +40,14 @@ class MemberList extends Component {
     } else if (this.state.showAll !== nextProps.showAll) {
       this.setState({
         showAll: nextProps.showAll,
+      });
+
+      return true;
+    } else if(this.state.user !== this.props.user){
+      //should we do this?
+      //Knp masuknya sbg user.user
+      this.setState({
+        user: nextProps.user,
       });
 
       return true;
@@ -93,20 +102,23 @@ class MemberList extends Component {
   }
 
   setProfile() {
-    this.props.hitung({
+    this.props.updateProfile({
       name: 'Ricky',
       email: 'edu.ricky.nugroho@gmail.com',
     });
   }
 
   render() {
+    console.log('User: ', this.props.user);
     return (
       <Grid container spacing={24}>
         {this.renderMemberList()}
         {this.showTotalMember()}
 
         <Grid item xs={3}>
-          {/* <Button onClick={() => this.setProfile()}>Profile</Button> */}
+          <Button variant="contained" color="primary" onClick={() => this.setProfile()}>Set User Profile</Button>
+          <Typography>User: {this.props.user.user.name}</Typography>
+          <Typography>Email: {this.props.user.user.email}</Typography>
         </Grid>
       </Grid>
     )
@@ -114,5 +126,5 @@ class MemberList extends Component {
 }
 
 // export default withStyles(styles)(MemberList);
-// export default connect(mapStateToProps, mapDispatchToProps)(MemberList);
-export default (MemberList);
+export default connect(mapStateToProps, mapDispatchToProps)(MemberList);
+// export default (MemberList);
