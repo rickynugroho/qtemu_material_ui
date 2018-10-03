@@ -44,15 +44,15 @@ class MemberList extends Component {
 
       return true;
     } 
-    // else if(this.state.user !== this.props.user){
-    //   //should we do this?
-    //   //Knp masuknya sbg user.user
-    //   this.setState({
-    //     user: nextProps.user,
-    //   });
+    else if(this.state.user !== nextProps.user){
+      //should we do this?
+      //Knp masuknya sbg user.user
+      this.setState({
+        user: nextProps.user,
+      });
 
-    //   return true;
-    // }
+      return true;
+    }
     return false;
   }
 
