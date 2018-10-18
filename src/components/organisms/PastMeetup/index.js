@@ -20,18 +20,20 @@ const styles = theme => ({
   },
   topic: {
     fontFamily: 'Roboto',
+    fontSize: '1.5em',
+    lineHeight: 1,
   }
 });
 
 class PastMeetup extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    // this.state = {
-    //   showAll: false,
-    //   toggleButtonText: 'Show All'
-    // };
-  }
+  //   this.state = {
+  //     showAll: false,
+  //     toggleButtonText: 'Show All'
+  //   };
+  // }
 
   renderPastMeetupList() {
     const { classes } = this.props;
@@ -44,7 +46,7 @@ class PastMeetup extends Component {
               <Typography className={classes.title} color="textSecondary" gutterBottom>
                 {meetup.date}
               </Typography>
-              <Typography gutterBottom={true} className={classes.topic} variant="h5" component="h2">
+              <Typography gutterBottom={true} className={classes.topic} component="h2">
                 {meetup.topic}
               </Typography>
 
