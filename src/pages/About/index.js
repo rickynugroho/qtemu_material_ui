@@ -13,15 +13,19 @@ const styles = theme => ({
     // paddingTop: theme.spacing.unit * 20,
   },
   title: {
-    marginBottom: 15,
-    // textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: '2em',
   },
   fluidImage: {
     width: "100%",
+    paddingRight: 10,
   },
   aboutContent: {
     marginTop: -15,
-    lineHeight: '1.4',
+    lineHeight: '1.6',
+    fontSize: '1em',
   }
 });
 
@@ -52,14 +56,14 @@ class About extends React.Component {
             About Us
           </Typography>
           <Grid container spacing={16}>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               <Image
                 src={this.state.aboutImage}
                 alt="About"
                 className={classes.fluidImage}
               />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={6}>
               <RawHtml className={classes.aboutContent}>
                 {this.state.aboutContent}
               </RawHtml>
