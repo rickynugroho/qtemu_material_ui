@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../../withRoot';
 import Section from '../../components/molecules/Section';
 import { Grid, Typography } from '@material-ui/core';
-import Image from '../../components/atoms/Image';
+// import Image from '../../components/atoms/Image';
 import RawHtml from '../../components/atoms/RawHtml';
 
 const styles = theme => ({
