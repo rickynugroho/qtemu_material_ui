@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import { Redirect } from "react-router-dom";
 // import IconButton from '@material-ui/core/IconButton';
 import {
   UserActionCreator,
@@ -52,6 +53,7 @@ class Header extends Component {
     this.state = {
       // auth: true,
       anchorEl: null,
+      redirectHome: false,
     };
   }
 
@@ -70,10 +72,22 @@ class Header extends Component {
   logout = () => {
     this.handleClose();
     this.props.logout();
+
+    this.setState({
+      redirectHome: true,
+    });
   }
 
   render() {
-    console.log('header', this.props.user.user.name);
+    if (this.state.redirectHome) {
+      this.setState({
+        redirectHome: false,
+      });
+
+      return <Redirect to="/"/>;
+    }
+
+    // console.log('header', this.props.user.user.name);
     const { classes } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);

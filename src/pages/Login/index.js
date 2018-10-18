@@ -9,6 +9,7 @@ import {
   UserActionCreator,
 } from '../../actions';
 import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   loginBtn: {
@@ -40,6 +41,7 @@ class Login extends React.Component {
 
     this.state = {
       email: '',
+      redirectHome: false,
     };
   }
 
@@ -48,11 +50,19 @@ class Login extends React.Component {
       name: 'Ricky',
       email: this.state.email,
     });
+
+    this.setState({
+      redirectHome: true,
+    });
   }
 
   render() {
     // console.log(this.props.user);
     const { classes } = this.props;
+
+    if (this.state.redirectHome) {
+      return <Redirect to="/"/>;
+    }
 
     return (
       // <div className={classes.root}>
