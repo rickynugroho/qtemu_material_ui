@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import MemberSingle from '../MemberSingle';
 import { connect } from 'react-redux';
 import {
@@ -102,15 +102,15 @@ class MemberList extends Component {
     }
   }
 
-  setProfile = (data) => {
-    this.props.updateProfile({
-      name: 'Ricky',
-      email: 'edu.ricky.nugroho@gmail.com',
-    });
-  }
+  // setProfile = (data) => {
+  //   this.props.updateProfile({
+  //     name: 'Ricky',
+  //     email: 'edu.ricky.nugroho@gmail.com',
+  //   });
+  // }
 
   render() {
-    console.log('User: ', this.props.user);
+    // console.log('User: ', this.props.user);
     return (
       <Grid container spacing={24}>
         {this.renderMemberList()}

@@ -5,6 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Section from '../../components/molecules/Section';
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
 import { Link } from "react-router-dom";
+import {
+  UserActionCreator,
+} from '../../actions';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   loginBtn: {
@@ -18,8 +22,36 @@ const styles = theme => ({
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (data) => dispatch(UserActionCreator.login(data)),
+  };
+};
+
 class Login extends React.Component {
+  constructor (){
+    super();
+
+    this.state = {
+      email: '',
+    };
+  }
+
+  login = (data) => {
+    this.props.login({
+      name: 'Ricky',
+      email: this.state.email,
+    });
+  }
+
   render() {
+    // console.log(this.props.user);
     const { classes } = this.props;
 
     return (
@@ -42,7 +74,7 @@ class Login extends React.Component {
               fullWidth
               className={classes.textField}
               // value={this.state.name}
-              // onChange={this.handleChange('name')}
+              onChange={(e) => { this.setState({email: e.target.value}) }}
               // margin="normal"
             />
 
@@ -56,7 +88,7 @@ class Login extends React.Component {
               // margin="normal"
             />
 
-            <Button color="primary" variant="contained" className={classes.loginBtn}>Login</Button>
+            <Button color="primary" variant="contained" className={classes.loginBtn} onClick={() => this.login()}>Login</Button>
             <Button component={Link} to="/register" className={classes.loginBtn}>or Register</Button>
           </Section>
         </Grid>
@@ -71,4 +103,6 @@ Login.propTypes = {
 };
 
 // export default withRoot(withStyles(styles)(Login));
-export default (withStyles(styles)(Login));
+// export default (withStyles(styles)(Login));
+// export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

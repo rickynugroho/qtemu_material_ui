@@ -8,6 +8,8 @@ import {
   PROFILE,
 } from '../constants/Types';
 
+import { REHYDRATE } from 'redux-persist';
+
 const initialState = {
   members: [],
   user: {},
@@ -15,7 +17,11 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  console.log('persist', action.payload);
   switch (action.type) {
+    case REHYDRATE:
+      return action.payload ? (action.payload.user ? action.payload.user : state) : state
+      
     case FETCH_MEMBER:
       return {
         ...state,

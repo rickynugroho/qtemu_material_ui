@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
 import Home from './Home';
 import About from './About';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import NotFound from './NotFound';
 import Login from './Login';
 import Register from './Register';
@@ -14,6 +14,7 @@ import Explore from './Explore';
 import CreateMeetup from './CreateMeetup';
 import ViewMeetup from './ViewMeetup';
 import Footer from '../components/organisms/Footer';
+import Header from '../components/organisms/Header';
 
 import { Provider } from "react-redux";
 import store from "../configs";
@@ -38,20 +39,14 @@ const styles = {
 
 class Index extends React.Component {
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     
     return (
       <Provider store={store}>
         <Router>
           <div>
-            <AppBar position="static">
+            {/* <AppBar position="static">
               <Toolbar>
-                {/* 
-                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                  <MenuIcon />
-                </IconButton> 
-                */}
-
                 <div className={classes.grow}>
                   <Button component={Link} to="/" className={classes.title} variant="text" color="inherit">
                     Qtemu
@@ -63,7 +58,8 @@ class Index extends React.Component {
                 <Button component={Link} to="/about" color="inherit">About</Button>
                 <Button component={Link} to="/login" color="inherit">Login</Button>
               </Toolbar>
-            </AppBar>
+            </AppBar> */}
+            <Header />
 
             <Switch>
               <Route exact path="/" component={Home} />
