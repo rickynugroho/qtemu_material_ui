@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 // import withRoot from '../../withRoot';
 import Section from '../../components/molecules/Section';
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   loginBtn: {
@@ -33,8 +34,8 @@ class Login extends React.Component {
             </Typography>
 
             <TextField
-              id="standard-name"
-              label="Name"
+              id="standard-email"
+              label="E-Mail"
               fullWidth
               // className={classes.textField}
               // value={this.state.name}
@@ -53,6 +54,7 @@ class Login extends React.Component {
             />
 
             <Button color="primary" variant="contained" className={classes.loginBtn}>Login</Button>
+            <Button component={Link} to="/register" className={classes.loginBtn}>or Register</Button>
           </Section>
         </Grid>
       </Grid>
