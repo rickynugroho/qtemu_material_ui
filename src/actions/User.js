@@ -5,7 +5,7 @@ import {
   UPDATE_PROFILE,
   FETCH_MEMBER,
   HITUNG,
-  PROFILE,
+  // PROFILE,
 } from '../constants/Types';
 
 /*
