@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 // import withRoot from '../../withRoot';
 import Section from '../../components/molecules/Section';
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   loginBtn: {
@@ -18,9 +19,25 @@ const styles = theme => ({
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
 class Login extends React.Component {
   render() {
     const { classes } = this.props;
+
+    if (this.props.user.user.name == undefined) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/login",
+          }}
+        />
+      )
+    }
 
     return (
       // <div className={classes.root}>
@@ -78,5 +95,5 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// export default withRoot(withStyles(styles)(Login));
-export default (withStyles(styles)(Login));
+// export default (withStyles(styles)(Login));
+export default connect(mapStateToProps)(withStyles(styles)(Login));
