@@ -13,6 +13,9 @@ const styles = theme => ({
   title: {
     marginBottom: theme.spacing.unit * 2,
   },
+  textField: {
+    marginTop: theme.spacing.unit * 1,
+  },
 });
 
 class Login extends React.Component {
@@ -37,7 +40,7 @@ class Login extends React.Component {
               id="standard-email"
               label="E-Mail"
               fullWidth
-              // className={classes.textField}
+              className={classes.textField}
               // value={this.state.name}
               // onChange={this.handleChange('name')}
               // margin="normal"
@@ -48,7 +51,7 @@ class Login extends React.Component {
               label="Password"
               type="password"
               fullWidth
-              // className={classes.textField}
+              className={classes.textField}
               // autoComplete="current-password"
               // margin="normal"
             />
