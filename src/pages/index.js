@@ -12,6 +12,7 @@ import Login from './Login';
 import Register from './Register';
 import Explore from './Explore';
 import CreateMeetup from './CreateMeetup';
+import ViewMeetup from './ViewMeetup';
 import Footer from '../components/organisms/Footer';
 
 import { Provider } from "react-redux";
@@ -70,6 +71,7 @@ class Index extends React.Component {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/explore" component={Explore} />
+              <Route path="/view_meetup" component={ViewMeetup} />
               <Route path="/create_meetup" component={CreateMeetup} />
               <Route component={NotFound} />
             </Switch>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Section from '../../molecules/Section';
 import { Grid, withStyles, Typography, Card, CardContent } from '@material-ui/core';
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -62,7 +63,7 @@ class PastMeetup extends Component {
               <Typography gutterBottom={true} paragraph={true}>
                 {meetup.content}
               </Typography>
-              <Button variant="contained">View</Button>
+              <Button variant="contained" component={Link} to="/view_meetup">View</Button>
             </CardContent>
           </Card>
         </Grid>
