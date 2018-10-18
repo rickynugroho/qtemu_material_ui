@@ -14,8 +14,10 @@ const styles = theme => ({
     // paddingTop: theme.spacing.unit * 20,
   },
   title: {
-    marginBottom: 15,
-    // textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: '2em',
   },
   aboutContent: {
     marginTop: -15,
@@ -35,19 +37,43 @@ class Explore extends React.Component {
         {
           id: 39,
           date: '1 November 2017',
-          topic: 'React Meetup with kumparan',
+          topic: 'React Meetup with Kumparan',
+          content: 'Today we place our meetup at Kumparan office...',
           participants: '54'
         },
         {
           id: 40,
           date: '15 September 2017',
-          topic: 'React Meetup with bibli',
+          topic: 'React Meetup with Bibli',
+          content: 'Today we place our meetup at Bibli office...',
           participants: '65'
         },
         {
           id: 41,
           date: '7 October 2017',
           topic: 'React Meetup with Hacktiv8',
+          content: 'Today we place our meetup at Hacktiv8 office...',
+          participants: '81'
+        },
+        {
+          id: 39,
+          date: '1 November 2017',
+          topic: 'React Meetup with Kumparan',
+          content: 'Today we place our meetup at Kumparan office...',
+          participants: '54'
+        },
+        {
+          id: 40,
+          date: '15 September 2017',
+          topic: 'React Meetup with Bibli',
+          content: 'Today we place our meetup at Bibli office...',
+          participants: '65'
+        },
+        {
+          id: 41,
+          date: '7 October 2017',
+          topic: 'React Meetup with Hacktiv8',
+          content: 'Today we place our meetup at Hacktiv8 office...',
           participants: '81'
         }
       ]

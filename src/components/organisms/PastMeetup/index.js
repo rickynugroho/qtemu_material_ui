@@ -9,6 +9,7 @@ const styles = theme => ({
   },
   card: {
     margin: theme.spacing.unit * 2,
+    height: 250,
   },
   line: {
     border: 0,
@@ -16,16 +17,19 @@ const styles = theme => ({
     backgroundColor: '#ccc',
     color: '#ccc',
   },
+  topic: {
+    fontFamily: 'Roboto',
+  }
 });
 
 class PastMeetup extends Component {
   constructor() {
     super();
 
-    this.state = {
-      showAll: false,
-      toggleButtonText: 'Show All'
-    };
+    // this.state = {
+    //   showAll: false,
+    //   toggleButtonText: 'Show All'
+    // };
   }
 
   renderPastMeetupList() {
@@ -36,15 +40,27 @@ class PastMeetup extends Component {
         <Grid item xs={4} key={index}>
           <Card className={classes.card} xs={4} key={index}>
             <CardContent>
-              <Typography>
+              <Typography className={classes.title} color="textSecondary" gutterBottom>
+                {meetup.date}
+              </Typography>
+              <Typography gutterBottom={true} className={classes.topic} variant="h5" component="h2">
+                {meetup.topic}
+              </Typography>
+
+              {/* <Typography>
                 {meetup.date}
               </Typography>
               <hr className={classes.line} />
               <Typography gutterBottom={true}>
                 {meetup.topic}
-              </Typography>
-              <Typography gutterBottom={true} paragraph={true}>
+              </Typography> */}
+
+              <Typography color="textSecondary" gutterBottom={true} paragraph={true}>
                 {meetup.participants} went
+              </Typography>
+
+              <Typography gutterBottom={true} paragraph={true}>
+                {meetup.content}
               </Typography>
               <Button variant="contained">View</Button>
             </CardContent>

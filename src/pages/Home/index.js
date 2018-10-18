@@ -12,9 +12,10 @@ import RawHtml from '../../components/atoms/RawHtml';
 import axios from 'axios';
 import Members from '../../components/organisms/Members';
 import PastMeetup from '../../components/organisms/PastMeetup';
+import { Link } from "react-router-dom";
 import {
   UserActionCreator,
-  ProductActionCreator,
+  // ProductActionCreator,
 } from '../../actions';
 
 const styles = theme => ({
@@ -37,7 +38,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     hitung: (data) => dispatch(UserActionCreator.hitung(data)),
-    createProduct: (data) => dispatch(ProductActionCreator.createProduct(data)),
+    // createProduct: (data) => dispatch(ProductActionCreator.createProduct(data)),
     // fetchData: () => dispatch(UserActionCreator.fetchData()),
     // register: (data) => dispatch(UserActionCreator.register(data)),
     // login: (data) => dispatch(UserActionCreator.login(data)),
@@ -103,33 +104,36 @@ class Home extends React.Component {
         {
           id: 39,
           date: '1 November 2017',
-          topic: 'React Meetup with kumparan',
+          topic: 'React Meetup with Kumparan',
+          content: 'Today we place our meetup at Kumparan office...',
           participants: '54'
         },
         {
           id: 40,
           date: '15 September 2017',
-          topic: 'React Meetup with bibli',
+          topic: 'React Meetup with Bibli',
+          content: 'Today we place our meetup at Bibli office...',
           participants: '65'
         },
         {
           id: 41,
           date: '7 October 2017',
           topic: 'React Meetup with Hacktiv8',
+          content: 'Today we place our meetup at Hacktiv8 office...',
           participants: '81'
         }
       ]
     };
   }
 
-  onClickHitung = (data) => {
-    // console.log('Angka sebelum: ', this.props.members.angka);
+  // onClickHitung = (data) => {
+  //   // console.log('Angka sebelum: ', this.props.members.angka);
 
-    this.props.hitung({
-      angka: 8,
-    });
+  //   this.props.hitung({
+  //     angka: 8,
+  //   });
 
-  };
+  // };
 
   componentDidMount() {
     axios
@@ -188,16 +192,17 @@ class Home extends React.Component {
                 </Grid>
 
                 <Grid item style={{ width: '100%' }}>
-                  <Button variant="contained" color="primary" className={classes.button}>
+                  {/* <Button variant="contained" color="primary" className={classes.button}>
                     Join Us
-                  </Button>
+                  </Button> */}
+                  <Button variant="contained" color="primary" component={Link} to="/register">Join Us</Button>
 
-                  <Button variant="contained" color="primary" className={classes.button} onClick={()=> this.onClickHitung()}>
+                  {/* <Button variant="contained" color="primary" className={classes.button} onClick={()=> this.onClickHitung()}>
                     Hitung
                   </Button>
                   <Typography>
                     Angka: {this.props.members.angka}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
               </Grid>
             </Grid>
@@ -221,7 +226,8 @@ class Home extends React.Component {
 
         <Members memberList={this.state.info.members} />
 
-        <PastMeetup meetupList={this.state.meetups} title="Past Meetup" rightContent={<Button>Show All</Button>} />
+        <PastMeetup meetupList={this.state.meetups} title="Past Meetup" rightContent={<Button component={Link} to="/explore">Show All</Button>} />
+        {/* <Button>Show All</Button> */}
       </div>
     );
   }
